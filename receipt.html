@@ -1,0 +1,152 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+<style>
+.receipt-box {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 35px;
+    max-width: 750px;
+    margin: auto;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    border: 1px solid #e3e3e3;
+}
+
+.receipt-header {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.receipt-header img {
+    width: 70px;
+    height: 70px;
+    margin-bottom: 8px;
+}
+
+.receipt-header h2 {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.receipt-line {
+    border-bottom: 2px solid #ddd;
+    margin: 20px 0;
+}
+
+.data-row {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.label {
+    font-weight: 700;
+}
+
+.sign-box {
+    margin-top: 40px;
+    text-align: right;
+    padding-right: 30px;
+    font-size: 16px;
+}
+
+.print-buttons {
+    display: flex;
+    gap: 12px;
+    margin-top: 25px;
+}
+
+@media print {
+    .print-buttons, .neo-sidebar, .topbar, nav, header {
+        display: none !important;
+    }
+    body {
+        background: white;
+    }
+    .receipt-box {
+        box-shadow: none !important;
+        border: none !important;
+    }
+}
+</style>
+
+
+<h3 class="fw-bold mb-4">Fee Receipt</h3>
+
+<div class="receipt-box" id="print-area">
+
+    <div class="receipt-header">
+        <img src="/static/logo.png">
+        <h2>Rajiv Gandhi Polytechnic</h2>
+        <p class="text-muted">Fee Receipt</p>
+    </div>
+
+    <div class="receipt-line"></div>
+
+    <div class="row">
+        <div class="col-md-6 data-row">
+            <span class="label">Name:</span> {{ r.name }}
+        </div>
+        <div class="col-md-6 data-row">
+            <span class="label">Roll No:</span> {{ r.roll_no }}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 data-row">
+            <span class="label">Course:</span> {{ r.course }}
+        </div>
+        <div class="col-md-6 data-row">
+            <span class="label">Phone:</span> {{ r.phone }}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 data-row">
+            <span class="label">Amount:</span> ₹{{ r.amount }}
+        </div>
+        <div class="col-md-6 data-row">
+            <span class="label">Date:</span> {{ r.date }}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 data-row">
+            <span class="label">Mode:</span> {{ r.mode }}
+        </div>
+        <div class="col-md-6 data-row">
+            <span class="label">Remark:</span> {{ r.remark }}
+        </div>
+    </div>
+
+    <div class="sign-box">
+        <b>Signature</b> ______________________
+    </div>
+
+</div>
+
+
+<div class="print-buttons">
+    <a href="{{ url_for('receipt_pdf', fee_id=r.id) }}" class="btn btn-primary">
+       Download PDF
+    </a>
+
+    <button class="btn btn-dark" onclick="printDiv()">Print Receipt</button>
+</div>
+
+
+<script>
+function printDiv() {
+  var printContent = document.getElementById("print-area").innerHTML;
+  var page = window.open("", "", "width=800,height=600");
+  page.document.write("<html><head><title>Print Receipt</title>");
+  page.document.write("<style>body{font-family:Arial;} img{width:60px;} .receipt-box{padding:20px;}</style>");
+  page.document.write("</head><body>");
+  page.document.write(printContent);
+  page.document.write("</body></html>");
+  page.document.close();
+  page.print();
+}
+</script>
+
+{% endblock %}

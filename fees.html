@@ -1,0 +1,44 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+<h3 class="fw-bold mb-4">Fees Entry</h3>
+
+<div class="neo-card">
+
+<form method="POST" class="neo-form">
+
+  <div class="row g-4">
+
+    <div class="col-md-6">
+      <label class="form-label">Roll Number</label>
+      <input name="roll" class="form-control" required>
+    </div>
+
+    <div class="col-md-6">
+      <label class="form-label">Amount</label>
+      <input name="amount" type="number" class="form-control" required>
+    </div>
+
+    <div class="col-md-6">
+      <label class="form-label">Payment Mode</label>
+      <select name="mode" class="form-select">
+        <option>Cash</option>
+        <option>UPI</option>
+        <option>Bank Transfer</option>
+      </select>
+    </div>
+
+    <div class="col-md-6">
+      <label class="form-label">Remark</label>
+      <input name="remark" class="form-control">
+    </div>
+
+  </div>
+
+  <button class="btn btn-primary w-100 mt-4">Submit & Print Receipt</button>
+
+</form>
+
+</div>
+
+{% endblock %}

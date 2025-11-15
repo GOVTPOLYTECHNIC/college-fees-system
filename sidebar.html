@@ -1,0 +1,132 @@
+<div class="neo-sidebar dark-sidebar">
+
+    <!-- Logo Section -->
+    <div class="neo-logo-section">
+        <img src="/static/logo.jpg" class="neo-logo-img">
+        <div class="neo-logo-text">Rajiv Gandhi Polytechnic</div>
+    </div>
+
+    <!-- Main Menu -->
+    <a href="{{ url_for('dashboard') }}" class="neo-link">
+        <i class="bi bi-speedometer2"></i> Dashboard
+    </a>
+
+    <a href="{{ url_for('admission') }}" class="neo-link">
+        <i class="bi bi-person-plus"></i> Admission
+    </a>
+
+    <a href="{{ url_for('students') }}" class="neo-link">
+        <i class="bi bi-people"></i> Students
+    </a>
+
+    <a href="{{ url_for('fees') }}" class="neo-link">
+        <i class="bi bi-cash-coin"></i> Fees Entry
+    </a>
+
+    <a href="{{ url_for('fees_list') }}" class="neo-link">
+        <i class="bi bi-receipt"></i> Fees List
+    </a>
+
+    <a href="{{ url_for('fees_summary') }}" class="neo-link">
+        <i class="bi bi-clipboard-data"></i> Summary
+    </a>
+
+    <a href="{{ url_for('dues_report') }}" class="neo-link">
+        <i class="bi bi-exclamation-octagon"></i> Due Report
+    </a>
+
+    <a href="{{ url_for('search') }}" class="neo-link">
+        <i class="bi bi-search"></i> Search
+    </a>
+
+    <!-- Separator -->
+    <div class="sidebar-separator">Export Tools</div>
+
+    <!-- Export Menu -->
+    <a href="{{ url_for('export_students') }}" class="neo-link">
+        <i class="bi bi-file-earmark-arrow-down"></i> Export Students
+    </a>
+
+    <a href="{{ url_for('export_fees') }}" class="neo-link">
+        <i class="bi bi-file-earmark-arrow-down"></i> Export Fees
+    </a>
+
+    <a href="{{ url_for('export_dues') }}" class="neo-link">
+        <i class="bi bi-file-earmark-arrow-down"></i> Export Dues
+    </a>
+
+</div>
+
+
+<style>
+/* ---- FULL DARK SIDEBAR ---- */
+.dark-sidebar {
+    background: #0e1117;
+    height: 100vh;
+    width: 250px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    padding-top: 25px;
+    box-shadow: 3px 0 15px rgba(0,0,0,0.4);
+    overflow-y: auto;
+}
+
+/* Logo Section */
+.neo-logo-section {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0 22px 28px 22px;
+}
+
+.neo-logo-img {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    box-shadow: 0 0 12px rgba(0,255,255,0.3);
+}
+
+.neo-logo-text {
+    font-size: 17px;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+/* Sidebar Links */
+.neo-link {
+    display: block;
+    padding: 13px 25px;
+    font-size: 15px;
+    font-weight: 500;
+    color: #d8e3ff;
+    text-decoration: none;
+    margin: 2px 0;
+    transition: 0.25s ease;
+}
+
+/* Hover + Active Highlight */
+.neo-link:hover {
+    background: #1b1f27;
+    color: #ffffff;
+    border-left: 4px solid #007bff;
+    padding-left: 21px;
+}
+
+/* Icons */
+.neo-link i {
+    margin-right: 12px;
+    font-size: 18px;
+    color: #ffffff;
+}
+
+/* Separator Title */
+.sidebar-separator {
+    margin: 22px 0 8px 22px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #8fa3c8;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+</style>

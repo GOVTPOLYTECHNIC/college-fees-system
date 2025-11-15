@@ -1,0 +1,64 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+<h3 class="mb-4 fw-bold">Dashboard</h3>
+
+<div class="row g-4">
+
+    <div class="col-md-3">
+        <div class="neo-stat">
+            <div>Total Students</div>
+            <h2>{{ total_students }}</h2>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="neo-stat" style="background: linear-gradient(135deg,#16a34a,#15803d)">
+            <div>Today Collection</div>
+            <h2>₹{{ today_collection }}</h2>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="neo-stat" style="background: linear-gradient(135deg,#f59e0b,#d97706)">
+            <div>This Month</div>
+            <h2>₹{{ month_collection }}</h2>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="neo-stat" style="background: linear-gradient(135deg,#ec4899,#db2777)">
+            <div>Total Collection</div>
+            <h2>₹{{ total_collection }}</h2>
+        </div>
+    </div>
+
+</div>
+
+<div class="neo-card mt-4">
+    <h5 class="mb-3 fw-bold">Last 6 Months Collection</h5>
+    <canvas id="chart"></canvas>
+</div>
+
+<script>
+fetch('/api/dashboard-data')
+.then(r=>r.json())
+.then(data=>{
+  new Chart(document.getElementById('chart'), {
+    type: 'line',
+    data: {
+      labels: data.labels,
+      datasets: [{
+        label: 'Collection (₹)',
+        data: data.values,
+        borderColor: '#2563eb',
+        backgroundColor:'rgba(37,99,235,0.20)',
+        tension: 0.45,
+        borderWidth: 3
+      }]
+    }
+  })
+});
+</script>
+
+{% endblock %}

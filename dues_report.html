@@ -1,0 +1,61 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+<h3 class="fw-bold mb-4">Due Report</h3>
+
+<div class="neo-card p-4">
+
+  <form class="row g-3 mb-4" method="get">
+    <div class="col-md-6">
+      <input name="q" value="{{ q }}" class="form-control" placeholder="Search by Name or Roll...">
+    </div>
+    <div class="col-md-3">
+      <button class="btn btn-primary w-100">Search</button>
+    </div>
+  </form>
+
+  <table class="table table-hover neo-table align-middle">
+
+    <thead class="table-warning">
+      <tr>
+        <th>Roll</th>
+        <th>Name</th>
+        <th>Total Fee</th>
+        <th>Paid</th>
+        <th>Due</th>
+        <th>Profile</th>
+      </tr>
+    </thead>
+
+    <tbody>
+
+      {% for row in results %}
+      <tr>
+        <td>{{ row.student.roll_no }}</td>
+        <td>{{ row.student.name }}</td>
+        <td>₹{{ row.student.total_fee }}</td>
+        <td>₹{{ row.paid }}</td>
+
+        <td>
+          {% if row.due > 0 %}
+            <span class="badge bg-danger p-2">₹{{ row.due }}</span>
+          {% else %}
+            <span class="badge bg-success p-2">PAID</span>
+          {% endif %}
+        </td>
+
+        <td>
+          <a href="{{ url_for('student_profile', student_id=row.student.id) }}" class="btn btn-success btn-sm">
+            View
+          </a>
+        </td>
+      </tr>
+      {% endfor %}
+
+    </tbody>
+
+  </table>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,14 @@
+<div class="neo-topbar shadow-sm">
+
+    <div class="neo-search-box">
+        <i class="bi bi-search"></i>
+        <input placeholder="Search anything...">
+    </div>
+
+    <div class="neo-user">
+        <span>{{ session.username }}</span>
+        <img src="https://i.ibb.co/ZH0Yts1/user.png" class="neo-avatar">
+        <a href="{{ url_for('logout') }}" class="neo-logout"><i class="bi bi-box-arrow-right"></i></a>
+    </div>
+
+</div>

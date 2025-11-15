@@ -1,0 +1,55 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+<h3 class="fw-bold mb-4">Edit Student Details</h3>
+
+<div class="neo-card">
+
+<form method="POST" enctype="multipart/form-data" class="neo-form">
+
+<div class="row g-4">
+
+  <div class="col-md-6">
+    <label class="form-label">Name</label>
+    <input name="name" class="form-control" value="{{ s.name }}">
+  </div>
+
+  <div class="col-md-6">
+    <label class="form-label">Course</label>
+    <input name="course" class="form-control" value="{{ s.course }}">
+  </div>
+
+  <div class="col-md-4">
+    <label class="form-label">Year</label>
+    <input name="year" class="form-control" value="{{ s.year }}">
+  </div>
+
+  <div class="col-md-4">
+    <label class="form-label">Email</label>
+    <input name="email" class="form-control" value="{{ s.email }}">
+  </div>
+
+  <div class="col-md-4">
+    <label class="form-label">Phone</label>
+    <input name="phone" class="form-control" value="{{ s.phone }}">
+  </div>
+
+  <div class="col-md-6">
+    <label class="form-label">Total Fee</label>
+    <input name="total_fee" class="form-control" value="{{ s.total_fee }}">
+  </div>
+
+  <div class="col-md-6">
+    <label class="form-label">Change Photo</label>
+    <input type="file" name="photo" class="form-control">
+  </div>
+
+</div>
+
+<button class="btn btn-primary w-100 mt-4">Update Student</button>
+
+</form>
+
+</div>
+
+{% endblock %}

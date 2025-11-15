@@ -1,0 +1,23 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-4">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="{{ url_for('dashboard') }}">RGP Polytechnic</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item"><a class="nav-link" href="{{ url_for('admission') }}">Admission</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ url_for('students') }}">Students</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ url_for('fees') }}">Fees Entry</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ url_for('fees_list') }}">Fees List</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ url_for('fees_summary') }}">Summary</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ url_for('dues_report') }}">Due Report</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ url_for('search') }}">Search</a></li>
+      </ul>
+
+      <span class="text-white">Hello, {{ session.username }}</span>
+      <a class="btn btn-light btn-sm ms-2" href="{{ url_for('logout') }}">Logout</a>
+    </div>
+  </div>
+</nav>

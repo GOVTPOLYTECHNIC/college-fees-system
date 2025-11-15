@@ -1,0 +1,60 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+<h3 class="fw-bold mb-4">New Admission</h3>
+
+<div class="neo-card">
+
+<form method="POST" enctype="multipart/form-data" class="neo-form">
+
+  <div class="row g-4">
+
+    <div class="col-md-6">
+      <label class="form-label">Student Name</label>
+      <input name="name" class="form-control" required>
+    </div>
+
+    <div class="col-md-6">
+      <label class="form-label">Roll Number</label>
+      <input name="roll" class="form-control" required>
+    </div>
+
+    <div class="col-md-4">
+      <label class="form-label">Course</label>
+      <input name="course" class="form-control" placeholder="Civil, Electrical...">
+    </div>
+
+    <div class="col-md-4">
+      <label class="form-label">Year</label>
+      <input name="year" class="form-control">
+    </div>
+
+    <div class="col-md-4">
+      <label class="form-label">Total Fee</label>
+      <input name="total_fee" class="form-control" value="20000">
+    </div>
+
+    <div class="col-md-6">
+      <label class="form-label">Email</label>
+      <input name="email" class="form-control">
+    </div>
+
+    <div class="col-md-6">
+      <label class="form-label">Phone</label>
+      <input name="phone" class="form-control">
+    </div>
+
+    <div class="col-md-12">
+      <label class="form-label">Upload Photo</label>
+      <input type="file" name="photo" class="form-control">
+    </div>
+
+  </div>
+
+  <button class="btn btn-primary mt-4 w-100">Save Admission</button>
+
+</form>
+
+</div>
+
+{% endblock %}

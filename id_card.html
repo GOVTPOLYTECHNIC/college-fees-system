@@ -1,0 +1,51 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+<h3 class="fw-bold mb-4">Student ID Card</h3>
+
+<div id="idcard" class="neo-card p-4" style="max-width:350px; margin:auto; border-radius:18px;">
+
+    <div class="text-center mb-3">
+        <img src="/static/logo.png" width="80">
+        <h4 class="fw-bold mt-2">Rajiv Gandhi Polytechnic</h4>
+        <p class="text-secondary" style="margin-top:-8px;">Amethi, Uttar Pradesh</p>
+    </div>
+
+    <div class="text-center">
+        {% if s.photo %}
+            <img src="/static/uploads/{{ s.photo }}" class="rounded-circle shadow" width="110">
+        {% else %}
+            <i class="bi bi-person-circle fs-1"></i>
+        {% endif %}
+    </div>
+
+    <h5 class="text-center mt-3">{{ s.name }}</h5>
+    <p class="text-center text-secondary">{{ s.course }}</p>
+
+    <hr>
+
+    <p><b>Roll No:</b> {{ s.roll_no }}</p>
+    <p><b>Year:</b> {{ s.year }}</p>
+    <p><b>Phone:</b> {{ s.phone }}</p>
+
+    <div class="text-center mt-3">
+        <img src="/{{ qr_path }}" width="110" class="shadow">
+    </div>
+
+</div>
+
+<div class="text-center mt-4">
+    <button class="btn btn-primary" onclick="printID()">Print ID Card</button>
+</div>
+
+<script>
+function printID() {
+    var printContent = document.getElementById("idcard").innerHTML;
+    var win = window.open("", "", "width=600,height=800");
+    win.document.write(printContent);
+    win.document.close();
+    win.print();
+}
+</script>
+
+{% endblock %}

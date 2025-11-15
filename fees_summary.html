@@ -1,0 +1,24 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+<h3 class="fw-bold mb-4">Fees Summary</h3>
+
+<div class="row g-4">
+
+  <div class="col-md-6">
+    <div class="neo-stat">
+      <div>Total Collection</div>
+      <h2>₹{{ total }}</h2>
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <div class="neo-stat" style="background: linear-gradient(135deg,#16a34a,#15803d)">
+      <div>Today's Collection</div>
+      <h2>₹{{ today_total }}</h2>
+    </div>
+  </div>
+
+</div>
+
+{% endblock %}

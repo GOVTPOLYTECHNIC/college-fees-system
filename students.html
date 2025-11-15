@@ -1,0 +1,58 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+<h3 class="fw-bold mb-4">Students List</h3>
+
+<div class="neo-card p-3">
+
+<table class="table neo-table table-hover align-middle">
+  <thead class="table-primary">
+    <tr>
+      <th>ID</th>
+      <th>Photo</th>
+      <th>Name</th>
+      <th>Roll</th>
+      <th>Course</th>
+      <th>Total Fee</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+
+    {% for s in students %}
+    <tr>
+      <td>{{ s.id }}</td>
+
+      <td>
+        {% if s.photo %}
+          <img src="/static/uploads/{{ s.photo }}" width="45" height="45" class="rounded-circle shadow-sm">
+        {% else %}
+          <i class="bi bi-person-circle fs-3 text-secondary"></i>
+        {% endif %}
+      </td>
+
+      <td>{{ s.name }}</td>
+      <td>{{ s.roll_no }}</td>
+      <td>{{ s.course }}</td>
+      <td>₹{{ s.total_fee }}</td>
+
+      <td>
+        <a class="btn btn-success btn-sm" href="{{ url_for('student_profile', student_id=s.id) }}"><i class="bi bi-eye"></i></a>
+        <a class="btn btn-warning btn-sm" href="{{ url_for('edit_student', student_id=s.id) }}"><i class="bi bi-pencil"></i></a>
+
+        <form action="{{ url_for('delete_student', student_id=s.id) }}" method="POST" class="d-inline"
+              onsubmit="return confirm('Delete this student?')">
+          <button class="btn btn-danger btn-sm"><i class="bi bi-trash"></i></button>
+        </form>
+      </td>
+    </tr>
+    {% endfor %}
+
+  </tbody>
+
+</table>
+
+</div>
+
+{% endblock %}

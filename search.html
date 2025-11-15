@@ -1,0 +1,53 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+<h3 class="fw-bold mb-4">Search Student</h3>
+
+<div class="neo-card p-4">
+
+<form method="POST" class="row g-3">
+
+  <div class="col-md-6">
+    <input name="q" value="{{ q }}" class="form-control" placeholder="Search Roll or Name">
+  </div>
+
+  <div class="col-md-3">
+    <button class="btn btn-primary w-100">Search</button>
+  </div>
+
+</form>
+
+</div>
+
+{% if result %}
+<div class="neo-card mt-4 p-4">
+
+  <div class="row">
+
+    <div class="col-md-2">
+      {% if result.s.photo %}
+        <img src="/static/uploads/{{ result.s.photo }}" class="rounded-circle" width="100">
+      {% else %}
+        <i class="bi bi-person-circle fs-1"></i>
+      {% endif %}
+    </div>
+
+    <div class="col-md-10">
+      <h4>{{ result.s.name }} ({{ result.s.roll_no }})</h4>
+      <p class="mb-1"><b>Course:</b> {{ result.s.course }}</p>
+      <p class="mb-1"><b>Paid:</b> ₹{{ result.paid }} &nbsp;&nbsp; <b>Due:</b> ₹{{ result.due }}</p>
+
+      <a href="{{ url_for('student_profile', student_id=result.s.id) }}" class="btn btn-success mt-2">
+        View Full Profile
+      </a>
+    </div>
+
+  </div>
+
+</div>
+
+{% elif q %}
+<p class="text-danger mt-3">No student found for "{{ q }}"</p>
+{% endif %}
+
+{% endblock %}

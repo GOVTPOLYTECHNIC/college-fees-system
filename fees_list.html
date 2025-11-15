@@ -1,0 +1,45 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+<h3 class="fw-bold mb-4">All Fees Records</h3>
+
+<div class="neo-card p-3">
+
+<table class="table neo-table table-hover align-middle">
+  <thead class="table-primary">
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Roll</th>
+      <th>Amount</th>
+      <th>Date</th>
+      <th>Mode</th>
+      <th>Remark</th>
+      <th>Receipt</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    {% for r in data %}
+    <tr>
+      <td>{{ r.id }}</td>
+      <td>{{ r.name }}</td>
+      <td>{{ r.roll_no }}</td>
+      <td>₹{{ r.amount }}</td>
+      <td>{{ r.date }}</td>
+      <td>{{ r.mode }}</td>
+      <td>{{ r.remark }}</td>
+      <td>
+        <a class="btn btn-outline-primary btn-sm"
+           href="{{ url_for('receipt', fee_id=r.id) }}">
+           Print
+        </a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+</div>
+
+{% endblock %}
