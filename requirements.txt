@@ -1,0 +1,7 @@
+Flask
+gunicorn
+requests
+python-dateutil
+Pillow
+qrcode
+reportlab
